@@ -28,9 +28,13 @@ jobs:
 
       - name: Configurar Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: false
+          packages: ''
 
-      - name: Instalar ferramentas Android
+      - name: Aceitar licenças e instalar ferramentas
         run: |
+          yes | sdkmanager --licenses
           sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018" "cmake;3.22.1"
 
       - name: Extrair projeto
